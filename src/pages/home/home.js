@@ -19,7 +19,10 @@ const Home = () => {
         <div className="d-flex flex-wrap">
           {dataProducts.map((product) => (
             <Link to="/detail_product" className="text-decoration-none">
-              <CardComponent title={product.name} price={product.price} />
+              <CardComponent 
+              title={product.name} 
+              price={product.price}
+              image={product.image}/>
             </Link>
           ))}
         </div>
