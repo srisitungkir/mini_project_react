@@ -29,10 +29,10 @@ const Home = () => {
   return (
     <div>
       {IsLoading ? ( <ReactLoading type="spinningBubbles" color="#0D6EFD" className="m-auto mt-5" />) : 
-      ( <Container className="mt-4">
+      (<Container className="mt-4">
         <div className="d-flex flex-wrap">
           {dataProducts.map((product) => (
-            <Link to="/detail_product" className="text-decoration-none">
+            <Link to={`/detail_product/${product.id}`} className="text-decoration-none">
               <CardComponent
                 title={product.name}
                 price={product.price}

@@ -9,7 +9,6 @@ const CardComponent = (props) => {
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>Rp. {props.price}</Card.Text>
-        {/* <Button variant="primary">Go somewhere</Button> */}
       </Card.Body>
     </Card>
   );
