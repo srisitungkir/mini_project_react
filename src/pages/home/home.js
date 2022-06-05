@@ -5,12 +5,20 @@ import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [dataProducts, setdataProducts] = useState([]);
+  const [dataProducts, setDataProducts] = useState([]);
+
+  const fetchGetAllProduct = async () => {
+    await getAllProducts()
+      .then((response) => {
+        setDataProducts(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
-    getAllProducts()
-      .then((response) => setdataProducts(response.data))
-      .catch((error) => console.log(error));
+    fetchGetAllProduct();
   }, []);
 
   return (
@@ -19,10 +27,11 @@ const Home = () => {
         <div className="d-flex flex-wrap">
           {dataProducts.map((product) => (
             <Link to="/detail_product" className="text-decoration-none">
-              <CardComponent 
-              title={product.name} 
-              price={product.price}
-              image={product.image}/>
+              <CardComponent
+                title={product.name}
+                price={product.price}
+                image={product.image}
+              />
             </Link>
           ))}
         </div>
