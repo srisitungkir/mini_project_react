@@ -6,7 +6,8 @@ import ReactLoading from "react-loading";
 
 const DashboardAdmin = () => {
   const [dataProduct, setDataProduct] = useState([]);
-  const [IsLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   const fetchGetAllProduct = async () => {
     await setIsLoading(true);
@@ -20,12 +21,12 @@ const DashboardAdmin = () => {
     await deleteProduct(id)
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
+    setRefresh(!refresh);
   };
 
   useEffect(() => {
     fetchGetAllProduct();
-    return () => {};
-  }, []);
+  }, [refresh]);
 
   return (
     <ProtectedComponent>
@@ -36,7 +37,7 @@ const DashboardAdmin = () => {
             Add Product
           </Button>
         </div>
-        {IsLoading ? (
+        {isLoading ? (
           <ReactLoading
             type="spinningBubbles"
             color="#0D6EFD"
