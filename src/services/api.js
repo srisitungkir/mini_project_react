@@ -28,11 +28,15 @@ export const register = (name, address, phone_number, password) => {
     password,
   };
 
-  const token = Cookies.get("token");
+  return axios.post(`${BASE_URL}/auth/register`, bodyJSON);
+};
 
-  const configHeaders = {
-    Authorization: "Bearer " + token,
+export const deleteProduct = (id) => {
+  const token = Cookies.get("token");
+  const headerConfig = {
+    header: {
+      Authorization: "Bearer " + token,
+    },
   };
-  // console.log(configHeaders);
-  return axios.post(`${BASE_URL}/auth/register`, bodyJSON, configHeaders);
+  return axios.delete(`${BASE_URL}/product/${id}`, headerConfig);
 };

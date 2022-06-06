@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProtectedComponent from "../../layout/protected_component";
 import { Table, Button } from "react-bootstrap";
-import { getAllProducts } from "../../services/api";
+import { deleteProduct, getAllProducts } from "../../services/api";
 import ReactLoading from "react-loading";
 
 const DashboardAdmin = () => {
@@ -9,11 +9,17 @@ const DashboardAdmin = () => {
   const [IsLoading, setIsLoading] = useState(false);
 
   const fetchGetAllProduct = async () => {
-    await setIsLoading(true)
+    await setIsLoading(true);
     await getAllProducts()
       .then((response) => setDataProduct(response.data))
       .catch((error) => console.log(error));
-      await setIsLoading(false)
+    await setIsLoading(false);
+  };
+
+  const deleteProductById = async (id) => {
+    await deleteProduct(id)
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -54,7 +60,11 @@ const DashboardAdmin = () => {
                   <td>{product.quantity}</td>
                   <td>
                     <Button variant="warning">Edit</Button>
-                    <Button variant="danger" className="mx-2">
+                    <Button
+                      variant="danger"
+                      className="mx-2"
+                      onClick={() => deleteProductById(product.id)}
+                    >
                       Delete
                     </Button>
                   </td>
