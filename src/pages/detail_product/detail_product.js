@@ -30,7 +30,7 @@ const DetailProduct = () => {
           className="m-auto mt-5"
         />
       ) : (
-        <Container className="mt-5">
+        // <Container className="mt-5">
           <Row>
             <Col md="2"><FigureComponent dataProduct={dataProduct} /></Col>
             <Col md="10">
@@ -39,7 +39,7 @@ const DetailProduct = () => {
             </Col>
           </Row>
           
-        </Container>
+        // </Container>
       )}
     </div>
   );
