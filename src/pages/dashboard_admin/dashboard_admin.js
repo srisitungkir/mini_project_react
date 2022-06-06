@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import ProtectedComponent from "../../layout/protected_component";
 
 const DashboardAdmin = () => {
   return (
-    <div>Dashboard Admin</div>
-  )
-}
+    <ProtectedComponent>
+      <div>Dashboard Admin</div>
+    </ProtectedComponent>
+  );
+};
 
 export default DashboardAdmin;

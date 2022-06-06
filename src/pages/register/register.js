@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import ProtectedComponent from "../../layout/protected_component";
 
 const Register = () => {
   return (
-    <div>Register</div>
-  )
-}
+    <ProtectedComponent>
+      <div>Register</div>
+    </ProtectedComponent>
+  );
+};
 
 export default Register;
